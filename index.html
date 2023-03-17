@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>I'm fine.</title>
+    <style type="text/css">
+        body {
+            background-color: #101010;
+            font-size: 64px;
+        }
+
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .fake {
+            color: #F0F0F0;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: -0.5em;
+            position: relative;
+            text-align: center;
+            top: 50%;
+        }
+    </style>
+    <meta name="description" content="Really, I'm fine." />
+    <meta name="keywords" content="depression, i am fine, i'm fine, im fine" />
+    <meta name="viewport" content="initial-scale=1,width=device-width" />
+</head>
+
+<body>
+    <h1 class="fake">I'm fine.</h1>
+    <script type="text/javascript">
+
+        var text = [
+            [
+                "Don't worry about me.",
+                "Everything's fine.",
+
+
+            ],
+            [
+                "Everything is awful.",
+                "Every day is harder than the last.",
+                "Every morning, I feel neutral. Not happy, not sad, just neutral.",
+                "Everyone cares about each other, but not about me.",
+                "Everyone is friendly with each other, but not with me.",
+                "Everything feels hollow and pointless and empty.",
+                "Everything is so pointless.",
+                "I am nothing.",
+                "I am so alone.",
+                "I can't do this any longer.",
+                "I can't remember when this started.",
+                "I can't stand feeling like this.",
+                "I can't talk with anybody about this.",
+                "I don't have any energy left.",
+                "I don't want anyone to see me this way.",
+                "I feel like giving up.",
+                "I feel like I'm drowning.",
+                "I feel like I've failed in life.",
+                "I feel so alone.",
+                "I get bullied.",
+                "I hate me.",
+                "I hate my life.",
+                "I hate myself.",
+                "I have no one.",
+
+            ]
+        ];
+
+        var message = function () {
+
+            var span = document.createElement("span"),
+                speed = Math.ceil(Math.random() * 4);
+
+            // Good text.
+            if (Math.random() < 0.01) {
+                span.appendChild(document.createTextNode(text[0][Math.floor(Math.random() * text[0].length)]));
+                span.className = "fake";
+            }
+
+            // Bad text.
+            else
+                span.appendChild(document.createTextNode(text[1][Math.floor(Math.random() * text[1].length)]));
+            document.body.appendChild(span);
+
+            span.style.left = document.body.clientWidth + "px"; // otherwise span.style.left is blank during calculations later
+            span.style.top = Math.floor(Math.random() * (document.body.clientHeight - span.clientHeight)) + "px";
+            spans[speed].push(span);
+
+
+        }
+        spans = [null, [], [], [], []];
+
+        message();
+
+
+    </script>
+</body>
+
+</html>
