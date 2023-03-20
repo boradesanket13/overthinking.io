@@ -95,12 +95,20 @@
             span.style.top = Math.floor(Math.random() * (document.body.clientHeight - span.clientHeight)) + "px";
             spans[speed].push(span);
 
+            setTimeout(
+                function () {
+                    requestAnimationFrame(message);
+                },
+
+                // Taller browsers = more messages added per second
+                Math.random() * span.clientHeight / document.body.clientHeight * 50000
+            );
 
         }
+
         spans = [null, [], [], [], []];
 
         message();
-
 
     </script>
 </body>
