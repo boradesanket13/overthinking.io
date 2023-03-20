@@ -75,6 +75,7 @@
             ]
         ];
 
+
         var message = function () {
 
             var span = document.createElement("span"),
@@ -104,11 +105,42 @@
                 Math.random() * span.clientHeight / document.body.clientHeight * 50000
             );
 
-        }
+        },
+            scroll = function () {
 
-        spans = [null, [], [], [], []];
+                requestAnimationFrame(scroll);
+
+                for (var speed = 1; speed < spans.length; speed++) {
+
+                    // For each span in this speed,
+                    for (var x = 0; x < spans[speed].length; x++) {
+
+                        // Move it 1px to the left.
+                        var left = parseInt(spans[speed][x].style.left, 10) - speed;
+                        spans[speed][x].style.left = left + "px";
+
+                        // If it's completely offscreen,
+                        if (left == -1 * spans[speed][x].clientWidth) {
+
+                            // Remove it from the DOM.
+                            document.body.removeChild(spans[speed][x]);
+
+                            // Remove it from the array.
+                            for (y = x; y < spans[speed].length - 1; y++)
+                                spans[speed][y] = spans[speed][y + 1];
+                            spans[speed].pop();
+
+                            // Reiterate this index (which now contains the next element).
+                            if (x < spans[speed].length - 1)
+                                x--;
+                        }
+                    }
+                }
+            },
+            spans = [null, [], [], [], []];
 
         message();
+        scroll();
 
     </script>
 </body>
